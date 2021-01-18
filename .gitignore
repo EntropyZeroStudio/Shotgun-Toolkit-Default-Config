@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+install_location.yml
+pipeline_configuration.yml
