@@ -192,9 +192,9 @@ paths:
     maya_asset_playblast : '@maya_root/images/publish/review/assets/{sg_asset_type}/{Asset}/{Step}/{name}.v{version}.mov'
 
     houdini_root: 3D/Houdini_Project
-    houdini_shot_root: 3D/Houdini_Project/scenes/sequences/{Sequence}/{Shot}/{Step}
+    houdini_shot_root: 3D/Houdini_Project/scenes/{Episode}/{Sequence}/{Shot}/{Step}
     houdini_asset_root: 3D/Houdini_Project/scenes/assets/{sg_asset_type}/{Asset}/{Step}
-    houdini_sequence_root: 3D/Houdini_Project/scenes/sequences/{Sequence}
+    houdini_sequence_root: 3D/Houdini_Project/scenes/{Episode}/{Sequence}
 
     shot_root: episodes/{Episode}/shots/{Sequence}/{Shot}
     asset_root: assets/{sg_asset_type}/{Asset}
@@ -311,10 +311,10 @@ paths:
         definition: '@maya_shot_root/work/{Shot}.v{version}.{maya_extension}'
     # The location of backups of WIP files
     maya_shot_snapshot:
-        definition: '@maya_shot_root/work/snapshots/{name}.v{version}.{timestamp}.{maya_extension}'
+        definition: '@maya_shot_root/work/snapshots/{Shot}.v{version}.{timestamp}.{maya_extension}'
     # The location of published maya files
     maya_shot_publish:
-        definition: '@maya_shot_root/publish/{name}.v{version}.{maya_extension}'
+        definition: '@maya_shot_root/publish/{Shot}.v{version}.{maya_extension}'
 
 
     #
@@ -329,13 +329,13 @@ paths:
         definition: '@houdini_shot_root/publish'
     # The location of WIP files
     houdini_shot_work:
-        definition: '@houdini_shot_root/work/{name}.v{version}.hip'
+        definition: '@houdini_shot_root/work/{Shot}.v{version}.hip'
     # The location of backups of WIP files
     houdini_shot_snapshot:
-        definition: '@houdini_shot_root/work/snapshots/{name}.v{version}.{timestamp}.hip'
+        definition: '@houdini_shot_root/work/snapshots/{Shot}.v{version}.{timestamp}.hip'
     # The location of published houdini files
     houdini_shot_publish:
-        definition: '@houdini_shot_root/publish/{name}.v{version}.hip'
+        definition: '@houdini_shot_root/publish/{Shot}.v{version}.hip'
     # Alembic caches
     houdini_shot_work_alembic_cache:
         definition: '@houdini_shot_root/work/cache/alembic/{name}/{houdini.node}/v{version}/{Shot}_{name}_v{version}.abc'
