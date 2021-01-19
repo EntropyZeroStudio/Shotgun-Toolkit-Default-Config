@@ -138,7 +138,7 @@ keys:
         choices:
             ma: Maya Ascii (.ma)
             mb: Maya Binary (.mb)
-        default: ma
+        default: mb
         alias: extension
 
     # needed by the Alias import as reference functionality
@@ -511,13 +511,13 @@ paths:
         definition: '@maya_asset_root/publish'
     # The location of WIP files
     maya_asset_work:
-        definition: '@maya_asset_root/work/{name}.v{version}.{maya_extension}'
+        definition: '@maya_asset_root/work/{Asset}.v{version}.{maya_extension}'
     # The location of backups of WIP files
     maya_asset_snapshot:
-        definition: '@maya_asset_root/work/snapshots/{name}.v{version}.{timestamp}.{maya_extension}'
+        definition: '@maya_asset_root/work/snapshots/{Asset}.v{version}.{timestamp}.{maya_extension}'
     # The location of published maya files
     maya_asset_publish:
-        definition: '@maya_asset_root/publish/{name}.v{version}.{maya_extension}'
+        definition: '@maya_asset_root/publish/{Asset}.v{version}.{maya_extension}'
 
 
     #
@@ -532,16 +532,16 @@ paths:
         definition: '@houdini_asset_root/publish'
     # The location of WIP files
     houdini_asset_work:
-        definition: '@houdini_asset_root/work/{name}.v{version}.hip'
+        definition: '@houdini_asset_root/work/{Asset}.v{version}.hip'
     # The location of backups of WIP files
     houdini_asset_snapshot:
-        definition: '@houdini_asset_root/work/snapshots/{name}.v{version}.{timestamp}.hip'
+        definition: '@houdini_asset_root/work/snapshots/{Asset}.v{version}.{timestamp}.hip'
     # The location of published houdini files
     houdini_asset_publish:
-        definition: '@houdini_asset_root/publish/{name}.v{version}.hip'
+        definition: '@houdini_asset_root/publish/{Asset}.v{version}.hip'
     # Alembic caches
     houdini_asset_work_alembic_cache:
-        definition: '@houdini_asset_root/work/cache/alembic/{name}/{houdini.node}/v{version}/{Asset}_{name}_v{version}.abc'
+        definition: '@houdini_asset_root/work/cache/alembic/{Asset}/{houdini.node}/v{version}/{Asset}_{name}_v{version}.abc'
 
     # Rendered images
     houdini_asset_render:
