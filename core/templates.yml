@@ -188,8 +188,8 @@ paths:
     maya_asset_root: 3D/Maya_Project/scenes/assets/{sg_asset_type}/{Asset}/{Step}
     maya_sequence_root: 3D/Maya_Project/scenes/{Episode}/{Sequence}
 
-    maya_shot_playblast : '@maya_root/images/publish/review/{Sequence}/{Shot}/{Step}/{name}.v{version}.mov'
-    maya_asset_playblast : '@maya_root/images/publish/review/assets/{sg_asset_type}/{Asset}/{Step}/{name}.v{version}.mov'
+    maya_shot_playblast : '@maya_root/images/publish/review/{Sequence}/{Shot}/{Step}/{Shot}.v{version}.mov'
+    maya_asset_playblast : '@maya_root/images/publish/review/assets/{sg_asset_type}/{Asset}/{Step}/{Shot}.v{version}.mov'
 
     houdini_root: 3D/Houdini_Project
     houdini_shot_root: 3D/Houdini_Project/scenes/{Episode}/{Sequence}/{Shot}/{Step}
@@ -447,7 +447,8 @@ paths:
     asset_alembic_cache:
         definition: '@maya_asset_root/publish/caches/{name}.v{version}.abc'
 
-
+    shot_alembic_cache:
+        definition: '@maya_shot_root/publish/caches/{name}.v{version}.abc'
     #
     # Photoshop
     #
