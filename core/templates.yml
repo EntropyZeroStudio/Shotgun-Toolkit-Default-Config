@@ -183,10 +183,6 @@ paths:
     #
     # These don't require the standard formatting (with definition and root_name) because they
     # will be set within each template that uses the alias.
-    shot_root: sequences/{Sequence}/{Shot}/{Step}
-    asset_root: assets/{sg_asset_type}/{Asset}/{Step}
-    sequence_root: sequences/{Sequence}
-
     maya_root: 3D/Maya_Project
     maya_shot_root: 3D/Maya_Project/scenes/sequences/{Sequence}/{Shot}/{Step}
     maya_asset_root: 3D/Maya_Project/scenes/assets/{sg_asset_type}/{Asset}/{Step}
@@ -203,6 +199,8 @@ paths:
     shot_root: episodes/{Episode}/shots/{Sequence}/{Shot}
     asset_root: assets/{sg_asset_type}/{Asset}
     sequence_root: shots/{Sequence}
+
+
     ##########################################################################################
     # Project level paths
     #
