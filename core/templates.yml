@@ -184,9 +184,9 @@ paths:
     # These don't require the standard formatting (with definition and root_name) because they
     # will be set within each template that uses the alias.
     maya_root: 3D/Maya_Project
-    maya_shot_root: 3D/Maya_Project/scenes/sequences/{Sequence}/{Shot}/{Step}
+    maya_shot_root: 3D/Maya_Project/scenes/{Episode}/{Sequence}/{Shot}/{Step}
     maya_asset_root: 3D/Maya_Project/scenes/assets/{sg_asset_type}/{Asset}/{Step}
-    maya_sequence_root: 3D/Maya_Project/scenes/sequences/{Sequence}
+    maya_sequence_root: 3D/Maya_Project/scenes/{Episode}/{Sequence}
 
     maya_shot_playblast : '@maya_root/images/publish/review/{Sequence}/{Shot}/{Step}/{name}.v{version}.mov'
     maya_asset_playblast : '@maya_root/images/publish/review/assets/{sg_asset_type}/{Asset}/{Step}/{name}.v{version}.mov'
@@ -308,7 +308,7 @@ paths:
         definition: '@maya_shot_root/publish'
     # The location of WIP files
     maya_shot_work:
-        definition: '@maya_shot_root/work/{name}.v{version}.{maya_extension}'
+        definition: '@maya_shot_root/work/{Shot}.v{version}.{maya_extension}'
     # The location of backups of WIP files
     maya_shot_snapshot:
         definition: '@maya_shot_root/work/snapshots/{name}.v{version}.{timestamp}.{maya_extension}'
