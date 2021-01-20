@@ -445,10 +445,10 @@ paths:
     #
 
     asset_alembic_cache:
-        definition: '@maya_asset_root/publish/caches/{name}.v{version}.abc'
+        definition: '@maya_asset_root/publish/caches/{Asset}.v{version}.abc'
 
     shot_alembic_cache:
-        definition: '@maya_shot_root/publish/caches/{name}.v{version}.abc'
+        definition: '@maya_shot_root/publish/caches/{Shot}.v{version}.abc'
     #
     # Photoshop
     #
