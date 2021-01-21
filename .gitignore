@@ -120,3 +120,4 @@ dmypy.json
 
 install_location.yml
 pipeline_configuration.yml
+roots.yml
