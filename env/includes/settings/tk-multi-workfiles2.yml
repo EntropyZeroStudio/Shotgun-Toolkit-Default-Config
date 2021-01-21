@@ -29,6 +29,7 @@ includes:
 # work area. The work area is typically a task or pipeline step
 # and these 'transit' areas can be project, shot, or sequence level.
 
+
 settings.tk-multi-workfiles2: &settings_tk-multi-workfiles2
   entities:
   - caption: Assets
@@ -49,6 +50,22 @@ settings.tk-multi-workfiles2: &settings_tk-multi-workfiles2
       filters:
       link_field: entity
       hierarchy: [step]
+  location: "@apps.tk-multi-workfiles2.location"
+
+settings.tk-multi-workfiles2.3D:
+  entities:
+  - caption: 3D_ASSETS
+    entity_type: Task
+    filters:
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Asset']
+    hierarchy: [entity.Asset.sg_asset_type, entity, content]
+  - caption: 3D_SHOTS
+    entity_type: Task
+    filters:
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Shot']
+    hierarchy: [entity.Shot.sg_sequence, entity, content]
   location: "@apps.tk-multi-workfiles2.location"
 
 # launches at startup.
@@ -73,6 +90,24 @@ settings.tk-multi-workfiles2.launch_at_startup:
       filters:
       link_field: entity
       hierarchy: [step]
+  location: "@apps.tk-multi-workfiles2.location"
+
+# launches at startup 3D Filtered.
+settings.tk-multi-workfiles2.3D_launch_at_startup:
+  launch_at_startup: true
+  entities:
+  - caption: 3D_ASSETS
+    entity_type: Task
+    filters:
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Asset']
+    hierarchy: [entity.Asset.sg_asset_type, entity, content]
+  - caption: 3D_SHOTS
+    entity_type: Task
+    filters:
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Shot']
+    hierarchy: [entity.Shot.sg_sequence, entity, content]
   location: "@apps.tk-multi-workfiles2.location"
 
 ################################################################################
@@ -175,24 +210,18 @@ settings.tk-multi-workfiles2.houdini.asset_step:
   template_work: houdini_asset_work
   template_work_area: asset_work_area_houdini
   entities:
-  - caption: Assets
-    entity_type: Asset
-    hierarchy: [sg_asset_type, code]
+  - caption: 3D_ASSETS
+    entity_type: Task
     filters:
-    sub_hierarchy:
-      entity_type: Task
-      filters:
-      link_field: entity
-      hierarchy: [step]
-  - caption: Shots
-    entity_type: Shot
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Asset']
+    hierarchy: [entity.Asset.sg_asset_type, entity, content]
+  - caption: 3D_SHOTS
+    entity_type: Task
     filters:
-    hierarchy: [sg_sequence, code]
-    sub_hierarchy:
-      entity_type: Task
-      filters:
-      link_field: entity
-      hierarchy: [step]
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Shot']
+    hierarchy: [entity.Shot.sg_sequence, entity, content]  
   location: "@apps.tk-multi-workfiles2.location"
 
 # shot_step
@@ -202,24 +231,18 @@ settings.tk-multi-workfiles2.houdini.shot_step:
   template_work: houdini_shot_work
   template_work_area: shot_work_area_houdini
   entities:
-  - caption: Assets
-    entity_type: Asset
-    hierarchy: [sg_asset_type, code]
+  - caption: 3D_ASSETS
+    entity_type: Task
     filters:
-    sub_hierarchy:
-      entity_type: Task
-      filters:
-      link_field: entity
-      hierarchy: [step]
-  - caption: Shots
-    entity_type: Shot
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Asset']
+    hierarchy: [entity.Asset.sg_asset_type, entity, content]
+  - caption: 3D_SHOTS
+    entity_type: Task
     filters:
-    hierarchy: [sg_sequence, code]
-    sub_hierarchy:
-      entity_type: Task
-      filters:
-      link_field: entity
-      hierarchy: [step]
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [entity, type_is, 'Shot']
+    hierarchy: [entity.Shot.sg_sequence, entity, content]  
   location: '@apps.tk-multi-workfiles2.location'
 
 ################################################################################
@@ -233,34 +256,16 @@ settings.tk-multi-workfiles2.maya.asset_step:
   template_work: maya_asset_work
   template_work_area: asset_work_area_maya
   entities:
-  #- caption: Assets
-  #  entity_type: Asset
-  #  hierarchy: [sg_asset_type, code]
-  #  filters:
-  #  sub_hierarchy:
-  #    entity_type: Task
-  #    filters:
-  #    link_field: entity
-  #    hierarchy: [step]
-  # caption: Shots
-  # entity_type: Shot
-  # filters:
-  # hierarchy: [sg_sequence, code]
-  # sub_hierarchy:
-  #   entity_type: Task
-  #   filters:
-  #   link_field: entity
-  #   hierarchy: [step]
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout"]]
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout"]]
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]
 
@@ -274,34 +279,16 @@ settings.tk-multi-workfiles2.maya.shot_step:
   template_work: maya_shot_work
   template_work_area: shot_work_area_maya
   entities:
-  #- caption: Assets
-  #  entity_type: Asset
-  #  hierarchy: [sg_asset_type, code]
-  #  filters:
-  #  sub_hierarchy:
-  #    entity_type: Task
-  #    filters:
-  #    link_field: entity
-  #    hierarchy: [step]
-  # caption: Shots
-  # entity_type: Shot
-  # filters:
-  # hierarchy: [sg_sequence, code]
-  # sub_hierarchy:
-  #   entity_type: Task
-  #   filters:
-  #   link_field: entity
-  #   hierarchy: [step]
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout"]]
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout"]]
+    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]
 

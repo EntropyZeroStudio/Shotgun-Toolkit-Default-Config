@@ -32,7 +32,7 @@ settings.tk-houdini.asset:
       location: "@apps.tk-multi-about.location"
     tk-multi-screeningroom: "@settings.tk-multi-screeningroom.rv"
     tk-multi-shotgunpanel: "@settings.tk-multi-shotgunpanel"
-    tk-multi-workfiles2: "@settings.tk-multi-workfiles2.launch_at_startup"
+    tk-multi-workfiles2: "@settings.tk-multi-workfiles2.3D_launch_at_startup"
   menu_favourites:
   - {app_instance: tk-multi-workfiles2, name: File Open...}
   location: "@engines.tk-houdini.location"
@@ -69,7 +69,7 @@ settings.tk-houdini.project:
       location: "@apps.tk-multi-about.location"
     tk-multi-screeningroom: "@settings.tk-multi-screeningroom.rv"
     tk-multi-shotgunpanel: "@settings.tk-multi-shotgunpanel"
-    tk-multi-workfiles2: "@settings.tk-multi-workfiles2"
+    tk-multi-workfiles2: "@settings.tk-multi-workfiles2.3D"
     tk-multi-setsceneParams :    
       location: "@apps.tk-multi-setsceneParams.location" 
   menu_favourites:
@@ -84,7 +84,7 @@ settings.tk-houdini.sequence:
       location: "@apps.tk-multi-about.location"
     tk-multi-screeningroom: "@settings.tk-multi-screeningroom.rv"
     tk-multi-shotgunpanel: "@settings.tk-multi-shotgunpanel"
-    tk-multi-workfiles2: "@settings.tk-multi-workfiles2"
+    tk-multi-workfiles2: "@settings.tk-multi-workfiles2.3D"
   menu_favourites:
   - {app_instance: tk-multi-workfiles2, name: File Open...}
   location: "@engines.tk-houdini.location"
@@ -96,7 +96,7 @@ settings.tk-houdini.shot:
       location: "@apps.tk-multi-about.location"
     tk-multi-screeningroom: "@settings.tk-multi-screeningroom.rv"
     tk-multi-shotgunpanel: "@settings.tk-multi-shotgunpanel"
-    tk-multi-workfiles2: "@settings.tk-multi-workfiles2"
+    tk-multi-workfiles2: "@settings.tk-multi-workfiles2.3D"
   menu_favourites:
   - {app_instance: tk-multi-workfiles2, name: File Open...}
   location: "@engines.tk-houdini.location"
