@@ -57,13 +57,17 @@ settings.tk-multi-workfiles2.3D:
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]
   location: "@apps.tk-multi-workfiles2.location"
@@ -99,13 +103,17 @@ settings.tk-multi-workfiles2.3D_launch_at_startup:
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]
   location: "@apps.tk-multi-workfiles2.location"
@@ -213,13 +221,17 @@ settings.tk-multi-workfiles2.houdini.asset_step:
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]  
   location: "@apps.tk-multi-workfiles2.location"
@@ -234,13 +246,17 @@ settings.tk-multi-workfiles2.houdini.shot_step:
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]  
   location: '@apps.tk-multi-workfiles2.location'
@@ -259,13 +275,17 @@ settings.tk-multi-workfiles2.maya.asset_step:
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]
 
@@ -282,13 +302,17 @@ settings.tk-multi-workfiles2.maya.shot_step:
   - caption: 3D_ASSETS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Asset']
     hierarchy: [entity.Asset.sg_asset_type, entity, content]
   - caption: 3D_SHOTS
     entity_type: Task
     filters:
-    - [content, in, ['FX','modeling',"layout","texturing", "Rigging", "shading", "visualization", "lighting", "rendering", "Animation"]]
+    - [content, in, ["tracking","layout",'modeling',"texturing",
+                     "rigging", "shading", "lighting","render3D",
+                     "visualization", "animation",'FX',"precomp3D",]]
     - [entity, type_is, 'Shot']
     hierarchy: [entity.Shot.sg_sequence, entity, content]
 
