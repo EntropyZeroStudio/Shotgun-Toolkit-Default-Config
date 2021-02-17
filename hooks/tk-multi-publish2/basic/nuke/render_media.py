@@ -178,14 +178,13 @@ class RenderMedia(HookBaseClass):
         """
         scale = nuke.nodes.Reformat()
         scale["type"].setValue("to box")
-        scale["box_width"].setValue(width)
-        scale["box_height"].setValue(height)
-        scale["resize"].setValue("fit")
+        scale["box_width"].setValue(3840)
+        scale["box_height"].setValue(2160)
+        scale["resize"].setValue("width")
         scale["box_fixed"].setValue(True)
         scale["center"].setValue(True)
         scale["black_outside"].setValue(True)
         return scale
-
     def __create_output_node(self, path):
         """
         Create the Nuke output node for the movie.
