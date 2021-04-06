@@ -237,10 +237,9 @@ class RenderMedia(HookBaseClass):
             if nuke.NUKE_VERSION_MAJOR >= 9:
                 # Nuke 9.0v1 changed the codec knob name to meta_codec and added an encoder knob
                 # (which defaults to the new mov64 encoder/decoder).
-                settings["meta_codec"] = "jpeg"
-                settings["mov64_quality_max"] = "3"
+                settings["meta_codec"] = "ap4h"
             else:
-                settings["codec"] = "jpeg"
+                settings["codec"] = "ap4h"
 
         elif sgtk.util.is_linux():
             if nuke.NUKE_VERSION_MAJOR >= 9:
