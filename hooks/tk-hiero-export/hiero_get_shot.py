@@ -75,7 +75,7 @@ class HieroGetShot(Hook):
        # find episode name from the tags on the sequence
        nuke_studio_episode = None
        for t in hiero_sequence.tags():
-           if t.name().startswith('JGR_'):
+           if t.name().startswith('FER_'):
                nuke_studio_episode = t
                break
        if not nuke_studio_episode:

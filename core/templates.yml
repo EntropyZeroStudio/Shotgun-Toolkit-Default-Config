@@ -196,7 +196,7 @@ paths:
     houdini_asset_root: 3D/Houdini_Project/scenes/assets/{sg_asset_type}/{Asset}/{Step}
     houdini_sequence_root: 3D/Houdini_Project/scenes/{Episode}/{Sequence}
 
-    shot_root: episodes/{Episode}/shots/{Sequence}/{Shot}
+    shot_root: shots/{Episode}/{Sequence}/{Shot}
     asset_root: assets/{sg_asset_type}/{Asset}
     sequence_root: shots/{Sequence}
 
@@ -211,17 +211,17 @@ paths:
 
     # The location of WIP files
     hiero_project_work:
-        definition: 'editorial/conformado/hiero/{name}_v{version}.hrox'
+        definition: 'editorial/online/work/hiero/{name}_v{version}.hrox'
     hiero_project_work_area:
-        definition: 'editorial/conformado/hiero'
+        definition: 'editorial/online/work/hiero'
     # The location of backups of WIP files
     hiero_project_snapshot:
-        definition: 'editorial/conformado/hiero/{name}/snapshots/{name}_v{version}_{timestamp}.hrox'
+        definition: 'editorial/online/work/hiero/{name}/snapshots/{name}_v{version}_{timestamp}.hrox'
     # The location of published hiero files
     hiero_project_publish:
-        definition: 'editorial/publish/{name}_v{version}.hrox'
+        definition: 'editorial/online/publish/{name}_v{version}.hrox'
     hiero_project_publish_area:
-        definition: 'editorial/publish'
+        definition: 'editorial/online/publish'
 
 
     ##########################################################################################
@@ -329,13 +329,13 @@ paths:
         definition: '@houdini_shot_root/publish'
     # The location of WIP files
     houdini_shot_work:
-        definition: '@houdini_shot_root/work/{Shot}_{Step}.v{version}.hip'
+        definition: '@houdini_shot_root/work/{Shot}_{Step}.v{version}.hiplc'
     # The location of backups of WIP files
     houdini_shot_snapshot:
-        definition: '@houdini_shot_root/work/snapshots/{Shot}_{Step}.v{version}.{timestamp}.hip'
+        definition: '@houdini_shot_root/work/snapshots/{Shot}_{Step}.v{version}.{timestamp}.hiplc'
     # The location of published houdini files
     houdini_shot_publish:
-        definition: '@houdini_shot_root/publish/{Shot}_{Step}.v{version}.hip'
+        definition: '@houdini_shot_root/publish/{Shot}_{Step}.v{version}.hiplc'
     # Alembic caches
     houdini_shot_work_alembic_cache:
         definition: '@houdini_shot_root/work/cache/alembic/{name}/{houdini.node}/v{version}/{Shot}_{name}_v{version}.abc'
@@ -409,17 +409,17 @@ paths:
         definition: '@shot_root/publish/scenes/nuke'
     # The location of WIP script files
     nuke_shot_work:
-        definition: '@shot_root/scenes/nuke/{task_name}/{Shot}_{task_name}_{name}_v{version}.nk'
+        definition: '@shot_root/scenes/nuke/{task_name}/{Shot}_ENT_{task_name}_v{version}.nk'
     # The location of backups of WIP files
     nuke_shot_snapshot:
-        definition: '@shot_root/scenes/nuke/{task_name}/_snapshots/{name}/{Shot}_{task_name}_{name}_v{version}_{timestamp}.nk'
+        definition: '@shot_root/scenes/nuke/{task_name}/_snapshots/{Shot}_ENT_{task_name}_v{version}_{timestamp}.nk'
     # The location of published nuke script files
     nuke_shot_publish:
-        definition: '@shot_root/publish/scenes/nuke/{Shot}_{task_name}_{name}_v{version}.nk'
+        definition: '@shot_root/publish/scenes/nuke/{Shot}_ENT_{task_name}_v{version}.nk'
     nuke_render:
-        definition: '@shot_root/elements/render2D/{nuke.output}/v{version}/{Shot}_{nuke.output}_ENT_v{version}/{Shot}_{nuke.output}_ENT_v{version}.{SEQ}.exr'
+        definition: '@shot_root/elements/render2D/{nuke.output}/v{version}/{Shot}_ENT_{nuke.output}_v{version}/{Shot}_ENT_{nuke.output}_v{version}.{SEQ}.exr'
     nuke_element:
-        definition: '@shot_root/scenes/nuke/_elements/{nuke.output}/v{version}/{Shot}_{nuke.output}_ENT_v{version}/{Shot}_{nuke.output}_ENT_v{version}.{SEQ}.exr'
+        definition: '@shot_root/scenes/nuke/_elements/{nuke.output}/v{version}/{Shot}_ENT_{nuke.output}_v{version}/{Shot}_ENT_{nuke.output}_v{version}.{SEQ}.exr'
     # review output
     shot_quicktime_quick:
         definition: '@shot_root/_review/quickdaily/{Shot}_{iteration}.mov'
@@ -432,9 +432,9 @@ paths:
 
     # export of shot asset data from hiero
     hiero_plate_path:
-        definition: 'episodes/{Episode}/shots/{Sequence}/{Shot}/editorial/offline/{Shot}_offline_v{version}.mov'
+        definition: 'shots/{Sequence}/{Shot}/editorial/offline/{Shot}_offline_v{version}.mov'
     hiero_render_path:
-        definition: 'episodes/{Episode}/shots/{Sequence}/{Shot}/editorial/plates/{Shot}_plate_v{version}/{Shot}_plate_v{version}.{SEQ}.exr'
+        definition: 'shots/{Sequence}/{Shot}/editorial/plates/{Shot}_plate_v{version}/{Shot}_plate_v{version}.{SEQ}.exr'
 
     ##########################################################################################
     # Asset pipeline

@@ -221,7 +221,9 @@ class UploadVersionPlugin(HookBaseClass):
 
         def get_path_to_frames():
 
-            change_folder = path.replace('\mov', '/fullres')
+            render_name = publish_name.replace('.mov', '')
+            exr_folder = '/exr/'+render_name
+            change_folder = path.replace('\mov', exr_folder)
             change_file_extension = change_folder.replace('.mov', '.####.exr')
             return change_file_extension
 
@@ -232,7 +234,7 @@ class UploadVersionPlugin(HookBaseClass):
             userName = os.environ['USERNAME']
             userDict = {'bgil': 286, 'daniel': 61, 'david': 58, 'dnicolas': 70, 'dperea': 152, 'hector': 62,
                         'jaime': 53, 'jordi': 54, 'jalvarez': 72, 'jgomez': 151, 'lgarcia': 118, 'lucia': 63,
-                        'mduque': 187, 'mmartinez': 319, 'pedro': 51, 'pibanez': 153,  'freelance': 385, 'fernando': 67}
+                        'mduque': 187, 'mmartinez': 319, 'pedro': 51, 'pibanez': 153,  'freelance': 385, 'fernando': 67, 'dgaratachea': 616}
             sg_user = userDict.get(userName)
             return sg_user
 

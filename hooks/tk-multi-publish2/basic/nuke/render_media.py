@@ -95,55 +95,51 @@ class RenderMedia(HookBaseClass):
             if color_space:
                 read["colorspace"].setValue(color_space)
 
-            # now create the slate/burnin node
-            burn = nuke.nodePaste(self._burnin_nk)
-            burn.setInput(0, read)
+            shot_name = ctx.entity["name"]    
+            cdl = nuke.nodes.OCIOCDLTransform()
+            cdl["direction"].setValue("forward")
+            cdl["working_space"].setValue("ACES - ACEScct")
+            cdl["read_from_file"].setValue(True)
+            cdl["file"].setValue('N:/TV_DEPARTMENT/FILMAX_FERIA/library/cdl/' + shot_name + '_MP_v001.cc')
+            cdl.setInput(0, read)
 
-            # set the fonts for all text fields
-            burn.node("top_left_text")["font"].setValue(self._font)
-            burn.node("top_right_text")["font"].setValue(self._font)
-            burn.node("bottom_left_text")["font"].setValue(self._font)
-            burn.node("framecounter")["font"].setValue(self._font)
-            burn.node("slate_info")["font"].setValue(self._font)
 
-            # add the logo
-            burn.node("logo")["file"].setValue(self._logo)
+            ### LUT NODE ###
 
-            # format the burnins
-            version_padding_format = "%%0%dd" % self.__app.get_setting(
-                "version_number_padding"
-            )
-            version_str = version_padding_format % version
-
-            if ctx.task:
-                version_label = "%s, v%s" % (ctx.task["name"], version_str)
-            elif ctx.step:
-                version_label = "%s, v%s" % (ctx.step["name"], version_str)
-            else:
-                version_label = "v%s" % version_str
-
-            burn.node("top_left_text")["message"].setValue(ctx.project["name"])
-            burn.node("top_right_text")["message"].setValue(ctx.entity["name"])
-            burn.node("bottom_left_text")["message"].setValue(version_label)
-
-            # and the slate
-            slate_str = "Project: %s\n" % ctx.project["name"]
-            slate_str += "%s: %s\n" % (ctx.entity["type"], ctx.entity["name"])
-            slate_str += "Name: %s\n" % name.capitalize()
-            slate_str += "Version: %s\n" % version_str
-
-            if ctx.task:
-                slate_str += "Task: %s\n" % ctx.task["name"]
-            elif ctx.step:
-                slate_str += "Step: %s\n" % ctx.step["name"]
-
-            slate_str += "Frames: %s - %s\n" % (first_frame, last_frame)
-
-            burn.node("slate_info")["message"].setValue(slate_str)
-
+            lut = nuke.nodes.Vectorfield()
+            lut["colorspaceIn"].setValue("SLog3")
+            lut["colorspaceOut"].setValue("SLog3")
+            
+            
+            def getLMT(shot):
+            
+                
+                filters = [
+            
+                    ['code', 'is', shot],
+                ]
+                lmtList = sgtk.platform.current_engine().shotgun.find('Shot',filters = filters, fields = ['sg_lmt'])
+                l = [i['sg_lmt'] for i in lmtList]
+                return l[0]
+            
+            LMT = getLMT(shot_name)
+            lut_folder = 'N:/TV_DEPARTMENT/FILMAX_FERIA/library/LUTs/nuke/' + LMT
+            lut["vfield_file"].setValue(lut_folder)
+            lut.setInput(0, cdl)
+            
+            
+            
+            
             # create a scale node
             scale = self.__create_scale_node(width, height)
-            scale.setInput(0, burn)
+            scale.setInput(0, lut)
+
+        
+
+
+    
+            
+            
 
             # Create the output node
             output_node = self.__create_output_node(output_path)
@@ -176,15 +172,23 @@ class RenderMedia(HookBaseClass):
         :returns:               Pre-configured Reformat node
         :rtype:                 Nuke node
         """
+        
+        #lut = nuke.nodes.Vectorfield()
+        #lut["colorspaceIn"].setValue("SLog3")
+        #lut["colorspaceOut"].setValue("SLog3")
         scale = nuke.nodes.Reformat()
         scale["type"].setValue("to box")
-        scale["box_width"].setValue(3840)
-        scale["box_height"].setValue(2160)
+        scale["box_width"].setValue(1920)
+        scale["box_height"].setValue(1080)
         scale["resize"].setValue("width")
         scale["box_fixed"].setValue(True)
         scale["center"].setValue(True)
         scale["black_outside"].setValue(True)
         return scale
+        #return lut
+
+
+
     def __create_output_node(self, path):
         """
         Create the Nuke output node for the movie.
@@ -232,22 +236,25 @@ class RenderMedia(HookBaseClass):
         """
         settings = {}
         if sgtk.util.is_windows() or sgtk.util.is_macos():
-            settings["file_type"] = "mov"
             settings['colorspace'] = "Output - Rec.709"
-            if nuke.NUKE_VERSION_MAJOR >= 9:
+            if nuke.NUKE_VERSION_MAJOR >= 12:
                 # Nuke 9.0v1 changed the codec knob name to meta_codec and added an encoder knob
                 # (which defaults to the new mov64 encoder/decoder).
-                settings["meta_codec"] = "ap4h"
+                settings["file_type"] = "mov64"
+                settings["mov64_codec"] = "AVdn"
+                settings['mov64_dnxhd_codec_profile'] = 'DNxHD 444 10-bit 440Mbit'
+
             else:
-                settings["codec"] = "ap4h"
+                settings["file_type"] = "mov64"
+                settings["meta_codec"] = "AVdn"
+                settings['mov64_dnxhd_codec_profile'] = 'DNxHD 444 10-bit 440Mbit'
 
         elif sgtk.util.is_linux():
-            if nuke.NUKE_VERSION_MAJOR >= 9:
+            if nuke.NUKE_VERSION_MAJOR >= 12:
                 # Nuke 9.0v1 removed ffmpeg and replaced it with the mov64 writer
                 # http://help.thefoundry.co.uk/nuke/9.0/#appendices/appendixc/supported_file_formats.html
-                settings["file_type"] = "mov64"
-                settings["mov64_codec"] = "jpeg"
-                settings["mov64_quality_max"] = "3"
+                ettings["file_type"] = "ffmpeg"
+                settings["format"] = "MOV format (mov)"
             else:
                 # the 'codec' knob name was changed to 'format' in Nuke 7.0
                 settings["file_type"] = "ffmpeg"

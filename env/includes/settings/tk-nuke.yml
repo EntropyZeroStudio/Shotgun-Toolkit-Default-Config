@@ -158,10 +158,15 @@ settings.tk-nuke.shot:
     tk-multi-reviewsubmission: "@settings.tk-multi-reviewsubmission.nuke.shot"
     tk-multi-screeningroom: "@settings.tk-multi-screeningroom.rv"
     tk-multi-shotgunpanel: "@settings.tk-multi-shotgunpanel.nuke"
-    #tk-multi-snapshot: "@settings.tk-multi-snapshot.nuke.shot_step"
+    tk-multi-snapshot: "@settings.tk-multi-snapshot.nuke.shot_step"
+    tk-multi-workfiles2: "@settings.tk-multi-workfiles2.nuke.shot_step"
+    tk-nuke-writenode: "@settings.tk-nuke-writenode.shot"
     tk-nuke-quickreview:
       location: "@apps.tk-nuke-quickreview.location"
   menu_favourites:
+  - {app_instance: tk-multi-workfiles2, name: File Open...}
+  - {app_instance: tk-multi-snapshot, name: Snapshot...}
+  - {app_instance: tk-multi-workfiles2, name: File Save...}
   - {app_instance: tk-multi-publish2, name: Publish...}
   location: "@engines.tk-nuke.location"
 
@@ -183,7 +188,7 @@ settings.tk-nuke.shot_step:
     tk-multi-workfiles2: "@settings.tk-multi-workfiles2.nuke.shot_step"
     tk-nuke-quickreview:
       location: "@apps.tk-nuke-quickreview.location"
-    #tk-nuke-writenode: "@settings.tk-nuke-writenode.shot"
+    tk-nuke-writenode: "@settings.tk-nuke-writenode.shot"
   menu_favourites:
   - {app_instance: tk-multi-workfiles2, name: File Open...}
   - {app_instance: tk-multi-snapshot, name: Snapshot...}
