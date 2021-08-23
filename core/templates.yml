@@ -70,6 +70,12 @@ keys:
         type: str
         filter_by: alphanumeric
 
+    # Hiero outputs  
+    plate_name:
+        alias: node
+        type: str
+        filter_by: alphanumeric
+
     # Represents the optional output name for frames written by the After Effects Publish Rendering Plugin
     afx.comp:
         alias: comp
