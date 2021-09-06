@@ -222,7 +222,7 @@ class UploadVersionPlugin(HookBaseClass):
         def get_path_to_frames():
 
             render_name = publish_name.replace('.mov', '')
-            exr_folder = '/exr/'+render_name
+            exr_folder = '/exr'
             change_folder = path.replace('\mov', exr_folder)
             change_file_extension = change_folder.replace('.mov', '.####.exr')
             return change_file_extension

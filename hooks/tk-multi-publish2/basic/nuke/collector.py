@@ -145,7 +145,7 @@ class NukeSessionCollector(HookBaseClass):
 
                 # construct publish name:
                 current_engine = sgtk.platform.current_engine()
-                render_template = current_engine.get_template_by_name('nuke_render')
+                render_template = current_engine.get_template_by_name('nuke_render_publish')
                 render_path_fields = render_template.get_fields(publish_path)
 
                 rp_name = render_path_fields.get("name")

@@ -208,7 +208,7 @@ paths:
 
     shot_root: shots/{Episode}/{Sequence}/{Shot}
     asset_root: assets/{sg_asset_type}/{Asset}
-    sequence_root: shots/{Sequence}
+    sequence_root: shots/{Episode}/{Sequence}
 
 
     ##########################################################################################
@@ -268,19 +268,19 @@ paths:
 
     # The location of WIP files
     photoshop_shot_work:
-        definition: '@shot_root/work/photoshop/psd/{task_name}/{Shot}_{task_name}_v{version}.psd'
+        definition: '@shot_root/work/photoshop/psd/{task_name}/{Shot}_{name}_v{version}.psd'
     shot_work_area_photoshop:
-        definition: '@shot_root/photoshop/psd/{task_name}'
+        definition: '@shot_root/photoshop/psd'
     # The location of backups of WIP files
     photoshop_shot_snapshot:
-        definition: '@shot_root/work/photoshop/psd/{task_name}/snapshots/{Shot}_{task_name}_v{version}_{timestamp}.psd'
+        definition: '@shot_root/work/photoshop/psd/{task_name}/snapshots/{Shot}_{name}_v{version}_{timestamp}.psd'
     # The location of published files
     shot_publish_area_photoshop:
-        definition: '@shot_root/publish/elements/{task_name}/v{version}/psd'
+        definition: '@shot_root/publish/render2D/{task_name}'
     photoshop_shot_publish:
-        definition: '@shot_root/publish/elements/{task_name}/v{version}/psd/{Shot}_{task_name}_v{version}/{Shot}_{task_name}_{name}_v{version}.psd'
+        definition: '@shot_root/publish/render2D/{task_name}/v{version}/psd/{Shot}_{name}_v{version}/{Shot}_{name}_v{version}.psd'
     photoshop_shot_publish_exr:
-        definition: '@shot_root/publish/elements/{task_name}/v{version}/exr/{Shot}_{task_name}_v{version}.exr'
+        definition: '@shot_root/publish/render2D/{task_name}/v{version}/exr/{Shot}_{name}_v{version}/{Shot}_{name}_v{version}.exr'
 
     #
     # After Effects
@@ -288,12 +288,12 @@ paths:
 
     # The location of WIP files
     aftereffects_shot_work:
-        definition: '@shot_root/work/afx/project/{task_name}/{Shot}_{task_name}_v{version}.aep'
+        definition: '@shot_root/work/afx/project/{task_name}/{Shot}_{name}_v{version}.aep'
     shot_work_area_aftereffects:
         definition: '@shot_root/work/afx/project/{task_name}'
     # The location of backups of WIP files
     aftereffects_shot_snapshot:
-        definition: '@shot_root/work/afx/project/{task_name}/snapshots/{Shot}_{task_name}_v{version}.{timestamp}.aep'
+        definition: '@shot_root/work/afx/project/{task_name}/snapshots/{Shot}_{name}_v{version}.{timestamp}.aep'
     # The location of published files
     shot_publish_area_aftereffects:
         definition: '@shot_root/publish/elements/{task_name}/afx'
@@ -414,26 +414,26 @@ paths:
 
     # define the location of a work area
     shot_work_area_nuke:
-        definition: '@shot_root/work/nuke/scripts/{task_name}'
+        definition: '@shot_root/work/nuke/scripts/'
     # define the location of a publish area
     shot_publish_area_nuke:
         definition: '@shot_root/work/nuke/scripts'
     # The location of WIP script files
     nuke_shot_work:
-        definition: '@shot_root/work/nuke/scripts/{task_name}/{Shot}_{task_name}_v{version}.nk'
+        definition: '@shot_root/work/nuke/scripts/{task_name}/{Shot}_{name}_v{version}.nk'
     # The location of backups of WIP files
     nuke_shot_snapshot:
-        definition: '@shot_root/work/nuke/scripts/{task_name}/snapshots/{Shot}_{task_name}_v{version}.{timestamp}.nk'
+        definition: '@shot_root/work/nuke/scripts/{task_name}/snapshots/{Shot}_{name}_v{version}.{timestamp}.nk'
     # The location of published nuke script files
     nuke_shot_publish:
-        definition: '@shot_root/publish/assets/nuke/{Shot}_{task_name}_v{version}.nk'
+        definition: '@shot_root/publish/elements/nuke/scenes/{Shot}_{name}_v{version}.nk'
     # write node outputs
     nuke_element_publish_exr:
         definition: '@shot_root/publish/elements/{nuke.output}/v{version}/exr/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.{SEQ}.exr'
     nuke_element_precomp_exr:
         definition: '@shot_root/work/nuke/elements/{nuke.output}/v{version}/exr/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.{SEQ}.exr'
     nuke_render_publish:
-        definition: '@shot_root/publish/render2D/{nuke.output}/v{version}/exr/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/publish/render2D/{nuke.output}/v{version}/exr/{Shot}_ENT_{nuke.output}_v{version}/{Shot}_ENT_{nuke.output}_v{version}.{SEQ}.exr'
     # review output
     shot_quicktime_quick:
         definition: '@shot_root/publish/render2D/{nuke.output}/v{version}/review/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.mov'
@@ -441,7 +441,7 @@ paths:
         definition: '@shot_root/publish/render2D/{nuke.output}/v{version}/mov/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.mov'
     # Node publishing
     nuke_node_publish:
-        definition: '@shot_root/publish/elements/{nuke_node}/{nuke_node}_v{version}.nk'
+        definition: '@shot_root/publish/elements/nuke/nodes/{nuke_node}_v{version}.nk'
     nuke_cam_publish:
         definition: '@shot_root/publish/elements/camera/v{version}/abc/{Shot}_camera_v{version}/{Shot}_camera_v{version}.abc'
 
@@ -474,17 +474,17 @@ paths:
 
     # The location of WIP files
     photoshop_asset_work:
-        definition: '@asset_root/work/photoshop/{task_name}/{Asset}_{task_name}_v{version}.psd'
+        definition: '@asset_root/work/photoshop/psd/{task_name}/{Asset}_{name}_v{version}.psd'
     asset_work_area_photoshop:
-        definition: '@asset_root/work/photoshop/{task_name}'
+        definition: '@asset_root/work/photoshop/psd'
     # The location of backups of WIP files
     photoshop_asset_snapshot:
-        definition: '@asset_root/work/photoshop/{task_name}/{Asset}_{task_name}_v{version}_{timestamp}.psd'
+        definition: '@asset_root/work/photoshop/psd/{task_name}/{Asset}_{name}_v{version}_{timestamp}.psd'
     # The location of published files
     asset_publish_area_photoshop:
-        definition: '@asset_root/publish/render2D/{task_name}/v{version}/psd'
+        definition: '@asset_root/publish/render2D/{task_name}'
     photoshop_asset_publish:
-        definition: 'asset_root/publish/render2D/{task_name}/v{version}/psd/{Asset}_{task_name}_v{version}.psd'
+        definition: '@asset_root/publish/render2D/{task_name}/v{version}/psd/{Asset}_{name}_v{version}/{Asset}_{name}_v{version}.psd'
 
     #
     # after effects
@@ -492,12 +492,12 @@ paths:
 
     # The location of WIP files
     aftereffects_asset_work:
-        definition: '@asset_root/work/afx/project/{task_name}/{Shot}_{task_name}_v{version}.aep'
+        definition: '@asset_root/work/afx/project/{task_name}/{Shot}_{name}_v{version}.aep'
     asset_work_area_aftereffects:
-        definition: '@asset_root/work/afx/project/{task_name}'
+        definition: '@asset_root/work/afx'
     # The location of backups of WIP files
     aftereffects_asset_snapshot:
-        definition: '@asset_root/work/afx/project/{task_name}/snapshots/{Shot}_{task_name}_v{version}.{timestamp}.aep'
+        definition: '@asset_root/work/afx/project/{task_name}/snapshots/{Shot}_{name}_v{version}.{timestamp}.aep'
     # The location of published files
     asset_publish_area_aftereffects:
         definition: '@asset_root/publish/elements/{task_name}/afx'
@@ -624,37 +624,37 @@ paths:
     #
 
     # define the location of a work area
-    shot_work_area_nuke:
-        definition: '@shot_root/work/nuke/scripts/{task_name}'
+    asset_work_area_nuke:
+        definition: '@asset_root/work/nuke'
     # define the location of a publish area
-    shot_publish_area_nuke:
-        definition: '@shot_root/work/nuke/scripts'
+    asset_publish_area_nuke:
+        definition: '@asset_root/work/nuke/scripts'
     # The location of WIP script files
-    nuke_shot_work:
-        definition: '@shot_root/work/nuke/scripts/{task_name}/{Shot}_{task_name}_v{version}.nk'
+    nuke_asset_work:
+        definition: '@asset_root/work/nuke/scripts/{task_name}/{Asset}_{name}_v{version}.nk'
     # The location of backups of WIP files
-    nuke_shot_snapshot:
-        definition: '@shot_root/work/nuke/scripts/{task_name}/snapshots/{Shot}_{task_name}_v{version}.{timestamp}.nk'
+    nuke_asset_snapshot:
+        definition: '@asset_root/work/nuke/scripts/{task_name}/snapshots/{Asset}_{name}_v{version}.{timestamp}.nk'
     # The location of published nuke script files
-    nuke_shot_publish:
-        definition: '@shot_root/publish/assets/nuke/{Shot}_{task_name}_v{version}.nk'
+    nuke_asset_publish:
+        definition: '@asset_root/publish/elements/nuke/scenes/{Asset}_{name}_v{version}.nk'
     # write node outputs
-    nuke_element_publish_exr:
-        definition: '@shot_root/publish/elements/{nuke.output}/v{version}/exr/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.{SEQ}.exr'
-    nuke_element_precomp_exr:
-        definition: '@shot_root/work/nuke/elements/{nuke.output}/v{version}/exr/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.{SEQ}.exr'
-    nuke_render_publish:
-        definition: '@shot_root/publish/render2D/{nuke.output}/v{version}/exr/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.{SEQ}.exr'
+    nuke_element_publish_asset:
+        definition: '@asset_root/publish/elements/{nuke.output}/v{version}/exr/{Asset}_{nuke.output}_v{version}/{Asset}_{nuke.output}_v{version}.{SEQ}.exr'
+    nuke_element_precomp_asset:
+        definition: '@asset_root/work/nuke/elements/{nuke.output}/v{version}/exr/{Asset}_{nuke.output}_v{version}/{Asset}_{nuke.output}_v{version}.{SEQ}.exr'
+    nuke_render_publish_asset:
+        definition: '@asset_root/publish/render2D/{nuke.output}/v{version}/exr/{Asset}_{nuke.output}_v{version}/{Asset}_{nuke.output}_v{version}.{SEQ}.exr'
     # review output
-    shot_quicktime_quick:
-        definition: '@shot_root/publish/render2D/{nuke.output}/v{version}/review/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.mov'
-    nuke_shot_render_movie:
-        definition: '@shot_root/publish/render2D/{nuke.output}/v{version}/mov/{Shot}_{nuke.output}_v{version}/{Shot}_{nuke.output}_v{version}.mov'
+    asset_quicktime_quick:
+        definition: '@asset_root/publish/render2D/{nuke.output}/v{version}/review/{Asset}_{nuke.output}_v{version}/{Asset}_{nuke.output}_v{version}.mov'
+    nuke_asset_render_movie:
+        definition: '@asset_root/publish/render2D/{nuke.output}/v{version}/mov/{Asset}_{nuke.output}_v{version}/{Asset}_{nuke.output}_v{version}.mov'
     # Node publishing
-    nuke_node_publish:
-        definition: '@shot_root/publish/assets/nuke_nodes/{nuke_node}/{nuke_node}.nk'
-    nuke_cam_publish:
-        definition: '@shot_root/publish/elements/camera/v{version}/abc/{Shot}_camera_v{version}/{Shot}_camera_v{version}.abc'
+    nuke_node_publish_asset:
+        definition: '@asset_root/publish/elements/nuke/nodes/{nuke_node}/{nuke_node}_v{version}.nk'
+    nuke_cam_publish_asset:
+        definition: '@asset_root/publish/elements/camera/v{version}/abc/{Asset}_camera_v{version}/{Asset}_camera_v{version}.abc'
 
     #
     # Alias

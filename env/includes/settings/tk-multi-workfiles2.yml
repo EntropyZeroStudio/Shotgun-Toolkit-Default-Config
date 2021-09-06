@@ -31,6 +31,7 @@ includes:
 
 
 settings.tk-multi-workfiles2: &settings_tk-multi-workfiles2
+  show_my_tasks: false
   entities:
   - caption: Assets
     entity_type: Asset
@@ -44,7 +45,7 @@ settings.tk-multi-workfiles2: &settings_tk-multi-workfiles2
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -75,6 +76,7 @@ settings.tk-multi-workfiles2.3D:
 # launches at startup.
 settings.tk-multi-workfiles2.launch_at_startup:
   launch_at_startup: true
+  show_my_tasks: false
   entities:
   - caption: Assets
     entity_type: Asset
@@ -88,7 +90,7 @@ settings.tk-multi-workfiles2.launch_at_startup:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -324,6 +326,7 @@ settings.tk-multi-workfiles2.maya.shot_step:
 
 # asset_step
 settings.tk-multi-workfiles2.nuke.asset_step:
+  show_my_tasks: false
   template_publish: nuke_asset_publish
   template_publish_area: asset_publish_area_nuke
   template_work: nuke_asset_work
@@ -341,7 +344,7 @@ settings.tk-multi-workfiles2.nuke.asset_step:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -351,6 +354,7 @@ settings.tk-multi-workfiles2.nuke.asset_step:
 
 # shot_step
 settings.tk-multi-workfiles2.nuke.shot_step:
+  show_my_tasks: false
   template_publish: nuke_shot_publish
   template_publish_area: shot_publish_area_nuke
   template_work: nuke_shot_work
@@ -368,7 +372,7 @@ settings.tk-multi-workfiles2.nuke.shot_step:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -382,6 +386,7 @@ settings.tk-multi-workfiles2.nuke.shot_step:
 
 # asset_step
 settings.tk-multi-workfiles2.photoshop.asset_step:
+  show_my_tasks: false
   template_publish: photoshop_asset_publish
   template_publish_area: asset_publish_area_photoshop
   template_work: photoshop_asset_work
@@ -399,7 +404,7 @@ settings.tk-multi-workfiles2.photoshop.asset_step:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -409,6 +414,7 @@ settings.tk-multi-workfiles2.photoshop.asset_step:
 
 # shot_step
 settings.tk-multi-workfiles2.photoshop.shot_step:
+  show_my_tasks: false
   template_publish: photoshop_shot_publish
   template_publish_area: shot_publish_area_photoshop
   template_work: photoshop_shot_work
@@ -426,7 +432,7 @@ settings.tk-multi-workfiles2.photoshop.shot_step:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -453,7 +459,7 @@ settings.tk-multi-workfiles2.aftereffects:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -481,7 +487,7 @@ settings.tk-multi-workfiles2.aftereffects.asset_step:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:
@@ -509,7 +515,7 @@ settings.tk-multi-workfiles2.aftereffects.shot_step:
   - caption: Shots
     entity_type: Shot
     filters:
-    hierarchy: [sg_sequence, code]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
     sub_hierarchy:
       entity_type: Task
       filters:

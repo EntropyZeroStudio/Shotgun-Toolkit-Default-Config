@@ -23,4 +23,4 @@ skip_unused: false
 field_name: "sg_asset_type"
 
 filters:
-    - { "path": "sg_asset_type", "relation": "in", "values": [ "mattepaint","concept","lookDev"] }
+    - { "path": "sg_asset_type", "relation": "in", "values": [ "mattepaint","concept","lookDev","stiching", "footage", "graphic"] }
