@@ -96,54 +96,11 @@ class RenderMedia(HookBaseClass):
                 read["colorspace"].setValue(color_space)
 
             # now create the slate/burnin node
-            burn = nuke.nodePaste(self._burnin_nk)
-            burn.setInput(0, read)
-
-            # set the fonts for all text fields
-            burn.node("top_left_text")["font"].setValue(self._font)
-            burn.node("top_right_text")["font"].setValue(self._font)
-            burn.node("bottom_left_text")["font"].setValue(self._font)
-            burn.node("framecounter")["font"].setValue(self._font)
-            burn.node("slate_info")["font"].setValue(self._font)
-
-            # add the logo
-            burn.node("logo")["file"].setValue(self._logo)
-
-            # format the burnins
-            version_padding_format = "%%0%dd" % self.__app.get_setting(
-                "version_number_padding"
-            )
-            version_str = version_padding_format % version
-
-            if ctx.task:
-                version_label = "%s, v%s" % (ctx.task["name"], version_str)
-            elif ctx.step:
-                version_label = "%s, v%s" % (ctx.step["name"], version_str)
-            else:
-                version_label = "v%s" % version_str
-
-            burn.node("top_left_text")["message"].setValue(ctx.project["name"])
-            burn.node("top_right_text")["message"].setValue(ctx.entity["name"])
-            burn.node("bottom_left_text")["message"].setValue(version_label)
-
-            # and the slate
-            slate_str = "Project: %s\n" % ctx.project["name"]
-            slate_str += "%s: %s\n" % (ctx.entity["type"], ctx.entity["name"])
-            slate_str += "Name: %s\n" % name.capitalize()
-            slate_str += "Version: %s\n" % version_str
-
-            if ctx.task:
-                slate_str += "Task: %s\n" % ctx.task["name"]
-            elif ctx.step:
-                slate_str += "Step: %s\n" % ctx.step["name"]
-
-            slate_str += "Frames: %s - %s\n" % (first_frame, last_frame)
-
-            burn.node("slate_info")["message"].setValue(slate_str)
+    
 
             # create a scale node
             scale = self.__create_scale_node(width, height)
-            scale.setInput(0, burn)
+            scale.setInput(0, read)
 
             # Create the output node
             output_node = self.__create_output_node(output_path)
@@ -178,8 +135,8 @@ class RenderMedia(HookBaseClass):
         """
         scale = nuke.nodes.Reformat()
         scale["type"].setValue("to box")
-        scale["box_width"].setValue(3840)
-        scale["box_height"].setValue(2160)
+        scale["box_width"].setValue(2640)
+        scale["box_height"].setValue(1486)
         scale["resize"].setValue("width")
         scale["box_fixed"].setValue(True)
         scale["center"].setValue(True)
@@ -232,25 +189,29 @@ class RenderMedia(HookBaseClass):
         """
         settings = {}
         if sgtk.util.is_windows() or sgtk.util.is_macos():
-            settings["file_type"] = "mov"
             settings['colorspace'] = "Output - Rec.709"
-            if nuke.NUKE_VERSION_MAJOR >= 9:
+            if nuke.NUKE_VERSION_MAJOR >= 12:
                 # Nuke 9.0v1 changed the codec knob name to meta_codec and added an encoder knob
                 # (which defaults to the new mov64 encoder/decoder).
-                settings["meta_codec"] = "ap4h"
+                settings["file_type"] = "mov64"
+                settings["mov64_codec"] = "appr"
+                settings['mov_prores_codec_profile'] = 'ProRes 4:2:2 HQ 10-bit'
+
             else:
-                settings["codec"] = "ap4h"
+                settings["file_type"] = "mov64"
+                settings["meta_codec"] = "AVdn"
+                settings['mov64_dnxhd_codec_profile'] = 'DNxHD 444 10-bit 440Mbit'
 
         elif sgtk.util.is_linux():
-            if nuke.NUKE_VERSION_MAJOR >= 9:
+            if nuke.NUKE_VERSION_MAJOR >= 12:
                 # Nuke 9.0v1 removed ffmpeg and replaced it with the mov64 writer
                 # http://help.thefoundry.co.uk/nuke/9.0/#appendices/appendixc/supported_file_formats.html
-                settings["file_type"] = "mov64"
-                settings["mov64_codec"] = "jpeg"
-                settings["mov64_quality_max"] = "3"
+                ettings["file_type"] = "ffmpeg"
+                settings["format"] = "MOV format (mov)"
             else:
                 # the 'codec' knob name was changed to 'format' in Nuke 7.0
                 settings["file_type"] = "ffmpeg"
                 settings["format"] = "MOV format (mov)"
 
         return settings
+
